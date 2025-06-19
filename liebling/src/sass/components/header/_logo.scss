@@ -1,0 +1,19 @@
+.m-logo {
+  display: inline-block;
+  height: 20px;
+  @include respond-to('extra-large') {
+    height: 35px;
+  }
+
+  img {
+    width: auto;
+    max-width: 265px;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  &.in-mobile-topbar {
+    height: 20px;
+    margin: 0 $mobile-space;
+  }
+}

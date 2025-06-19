@@ -10,9 +10,18 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Deploy Ghost Theme
+      # Desplegar el tema tailwind
+      - name: Deploy Ghost Theme Tailwind
         uses: TryGhost/action-deploy-theme@v1.6.6
         with:
           api-url: ${{ secrets.GHOST_ADMIN_API_URL }}
           api-key: ${{ secrets.GHOST_ADMIN_API_KEY }}
           theme-name: 'tailwind'
+
+      # Desplegar el nuevo tema liebling
+      - name: Deploy Ghost Theme Liebling
+        uses: TryGhost/action-deploy-theme@v1.6.6
+        with:
+          api-url: ${{ secrets.GHOST_ADMIN_API_URL }}
+          api-key: ${{ secrets.GHOST_ADMIN_API_KEY }}
+          theme-name: 'liebling'
