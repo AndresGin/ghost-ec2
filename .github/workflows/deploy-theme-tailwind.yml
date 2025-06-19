@@ -10,18 +10,42 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      # Desplegar el tema tailwind
+      # Empaquetar el tema "tailwind"
+      - name: Package Tailwind Theme
+        run: |
+          cd tailwind
+          zip -r ../tailwind.zip . -x "*.git*" "*.zip*" "yarn*" "npm*" "node_modules*" "*routes.yaml" "*redirects.yaml" "*redirects.json"
+
+      # Empaquetar el tema "liebling"
+      - name: Package Liebling Theme
+        run: |
+          cd liebling
+          zip -r ../liebling.zip . -x "*.git*" "*.zip*" "yarn*" "npm*" "node_modules*" "*routes.yaml" "*redirects.yaml" "*redirects.json"
+
+      # Desplegar el tema "tailwind"
       - name: Deploy Ghost Theme Tailwind
         uses: TryGhost/action-deploy-theme@v1.6.6
         with:
           api-url: ${{ secrets.GHOST_ADMIN_API_URL }}
           api-key: ${{ secrets.GHOST_ADMIN_API_KEY }}
-          theme-name: 'tailwind'
+          theme-path: 'tailwind.zip'
 
-      # Desplegar el nuevo tema liebling
+      # Desplegar el tema "liebling"
       - name: Deploy Ghost Theme Liebling
         uses: TryGhost/action-deploy-theme@v1.6.6
         with:
           api-url: ${{ secrets.GHOST_ADMIN_API_URL }}
           api-key: ${{ secrets.GHOST_ADMIN_API_KEY }}
-          theme-name: 'liebling'
+          theme-path: 'liebling.zip'
+
+      # Activar el tema "tailwind" (si deseas activarlo)
+      - name: Activate Tailwind Theme
+        run: |
+          curl -X POST ${{ secrets.GHOST_ADMIN_API_URL }}/themes/tailwind/activate/ \
+            -H "Authorization: Ghost ${GHOST_ADMIN_API_KEY}"
+
+      # Activar el tema "liebling" (si deseas activarlo en lugar de tailwind)
+      - name: Activate Liebling Theme
+        run: |
+          curl -X POST ${{ secrets.GHOST_ADMIN_API_URL }}/themes/liebling/activate/ \
+            -H "Authorization: Ghost ${GHOST_ADMIN_API_KEY}"
