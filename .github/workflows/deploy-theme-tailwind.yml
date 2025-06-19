@@ -38,14 +38,3 @@ jobs:
           api-key: ${{ secrets.GHOST_ADMIN_API_KEY }}
           theme-path: 'liebling.zip'
 
-      # Activar el tema "tailwind" (si deseas activarlo)
-      - name: Activate Tailwind Theme
-        run: |
-          curl -X POST ${{ secrets.GHOST_ADMIN_API_URL }}/themes/tailwind/activate/ \
-            -H "Authorization: Ghost ${GHOST_ADMIN_API_KEY}"
-
-      # Activar el tema "liebling" (si deseas activarlo en lugar de tailwind)
-      - name: Activate Liebling Theme
-        run: |
-          curl -X POST ${{ secrets.GHOST_ADMIN_API_URL }}/themes/liebling/activate/ \
-            -H "Authorization: Ghost ${GHOST_ADMIN_API_KEY}"
