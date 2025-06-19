@@ -1,4 +1,4 @@
-# Liebling
+# Liebling prod
 
 Liebling is a beautiful and clean Ghost theme that is easy and comfortable to use. **It's free** and you can use it for any kind of content you might have. Now with dark mode 🌓!
 
