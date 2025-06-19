@@ -14,14 +14,14 @@ jobs:
       # Empaquetar el tema "tailwind"
       - name: Package Tailwind Theme
         run: |
-          cd tailwind
-          zip -r ../tailwind.zip . -x "*.git*" "*.zip*" "yarn*" "npm*" "node_modules*" "*routes.yaml" "*redirects.yaml" "*redirects.json"
+          cd themes/tailwind
+          zip -r ..themes/tailwind.zip . -x "*.git*" "*.zip*" "yarn*" "npm*" "node_modules*" "*routes.yaml" "*redirects.yaml" "*redirects.json"
 
       # Empaquetar el tema "liebling"
       - name: Package Liebling Theme
         run: |
-          cd liebling
-          zip -r ../liebling.zip . -x "*.git*" "*.zip*" "yarn*" "npm*" "node_modules*" "*routes.yaml" "*redirects.yaml" "*redirects.json"
+          cd themes/liebling
+          zip -r ..themes/liebling.zip . -x "*.git*" "*.zip*" "yarn*" "npm*" "node_modules*" "*routes.yaml" "*redirects.yaml" "*redirects.json"
 
       # Configurar el entorno y API según la rama
       - name: Set up Ghost API URL and Key
