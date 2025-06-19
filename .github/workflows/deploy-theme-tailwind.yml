@@ -28,12 +28,12 @@ jobs:
         run: |
           if [[ $GITHUB_REF == 'refs/heads/main' ]]; then
             echo "Using Production Environment"
-            echo "GHOST_ADMIN_API_URL=${{ secrets.PROD_GHOST_ADMIN_API_KEY }}" >> $GITHUB_ENV
-            echo "GHOST_ADMIN_API_KEY=${{ secrets.PROD_GHOST_ADMIN_API_URL }}" >> $GITHUB_ENV
+            echo "GHOST_ADMIN_API_URL=${{ secrets.PROD_GHOST_ADMIN_API_URL }}" >> $GITHUB_ENV
+            echo "GHOST_ADMIN_API_KEY=${{ secrets.PROD_GHOST_ADMIN_API_KEY }}" >> $GITHUB_ENV
           elif [[ $GITHUB_REF == 'refs/heads/dev' ]]; then
             echo "Using Demo Environment"
-            echo "GHOST_ADMIN_API_URL=${{ secrets.DEMO_GHOST_ADMIN_API_KEY }}" >> $GITHUB_ENV
-            echo "GHOST_ADMIN_API_KEY=${{ secrets.DEMO_GHOST_ADMIN_API_URL }}" >> $GITHUB_ENV
+            echo "GHOST_ADMIN_API_URL=${{ secrets.DEMO_GHOST_ADMIN_API_URL }}" >> $GITHUB_ENV
+            echo "GHOST_ADMIN_API_KEY=${{ secrets.DEMO_GHOST_ADMIN_API_KEY }}" >> $GITHUB_ENV
           fi
 
       # Desplegar el tema "tailwind"
