@@ -2,8 +2,9 @@ name: Deploy and Activate Theme
 on:
   push:
     branches:
-      - master
-      - main
+      - main       # Producción
+      - dev        # Demo
+
 jobs:
   deploy:
     runs-on: ubuntu-22.04
@@ -22,18 +23,31 @@ jobs:
           cd liebling
           zip -r ../liebling.zip . -x "*.git*" "*.zip*" "yarn*" "npm*" "node_modules*" "*routes.yaml" "*redirects.yaml" "*redirects.json"
 
+      # Configurar el entorno y API según la rama
+      - name: Set up Ghost API URL and Key
+        run: |
+          if [[ $GITHUB_REF == 'refs/heads/main' ]]; then
+            echo "Using Production Environment"
+            echo "GHOST_ADMIN_API_URL=${{ secrets.PROD_GHOST_PROD_API_URL }}" >> $GITHUB_ENV
+            echo "GHOST_ADMIN_API_KEY=${{ secrets.PROD_GHOST_PROD_API_KEY }}" >> $GITHUB_ENV
+          elif [[ $GITHUB_REF == 'refs/heads/dev' ]]; then
+            echo "Using Demo Environment"
+            echo "GHOST_ADMIN_API_URL=${{ secrets.DEMO_GHOST_ADMIN_API_KEY }}" >> $GITHUB_ENV
+            echo "GHOST_ADMIN_API_KEY=${{ secrets.DEMO_GHOST_ADMIN_API_URL }}" >> $GITHUB_ENV
+          fi
+
       # Desplegar el tema "tailwind"
       - name: Deploy Ghost Theme Tailwind
         uses: TryGhost/action-deploy-theme@v1.6.6
         with:
-          api-url: ${{ secrets.GHOST_ADMIN_API_URL }}
-          api-key: ${{ secrets.GHOST_ADMIN_API_KEY }}
-          file: 'tailwind.zip'  # Usamos 'file' para subir el archivo .zip
+          api-url: ${{ env.GHOST_ADMIN_API_URL }}
+          api-key: ${{ env.GHOST_ADMIN_API_KEY }}
+          file: 'tailwind.zip'
 
       # Desplegar el tema "liebling"
       - name: Deploy Ghost Theme Liebling
         uses: TryGhost/action-deploy-theme@v1.6.6
         with:
-          api-url: ${{ secrets.GHOST_ADMIN_API_URL }}
-          api-key: ${{ secrets.GHOST_ADMIN_API_KEY }}
-          file: 'liebling.zip'  # Usamos 'file' para subir el archivo .zip
+          api-url: ${{ env.GHOST_ADMIN_API_URL }}
+          api-key: ${{ env.GHOST_ADMIN_API_KEY }}
+          file: 'liebling.zip'
