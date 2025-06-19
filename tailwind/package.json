@@ -1,0 +1,102 @@
+{
+    "name": "tailwind",
+    "description": "Ghost v5 Theme made for SREDevOps.org (https://sredevops.org) based on Tailwind CSS v3, responsive, dark color schema, SVG icons, sidebar + footer navgation, customized tags and recommendations pages.",
+    "demo": "https://sredevops.org",
+    "version": "1.2.3",
+    "engines": {
+        "ghost": ">=5.0.0"
+    },
+    "license": "MIT",
+    "scripts": {
+        "dev": "gulp",
+        "build": "gulp build",
+        "test": "gscan .",
+        "test:dev": "npx gscan --verbose .",
+        "test:ci": "gscan --fatal --verbose ."
+    },
+    "author": {
+        "name": "Nicolas Georger",
+        "email": "info@sredevops.org",
+        "url": "https://sredevops.org"
+    },
+    "gpm": {
+        "type": "theme",
+        "categories": [
+            "Dark",
+            "Magazine",
+            "Sidebar navigation"
+        ]
+    },
+    "keywords": [
+        "ghost",
+        "theme",
+        "ghost-theme"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/sredevopsorg/sredevopsorg-ghost-theme"
+    },
+    "bugs": "https://github.com/sredevopsorg/sredevopsorg-ghost-theme/issues",
+    "contributors": [
+        "https://github.com/sredevopsorg/sredevopsorg-ghost-theme/graphs/contributors"
+    ],
+    "devDependencies": {
+        "@tailwindcss/forms": "^0.5.10",
+        "@tailwindcss/typography": "^0.5.16",
+        "autoprefixer": "^10.4.21",
+        "cssnano": "7.0.6",
+        "gulp": "^5.0.0",
+        "gulp-concat": "2.6.1",
+        "gulp-livereload": "4.0.2",
+        "gulp-postcss": "10.0.0",
+        "gulp-uglify": "3.0.2",
+        "postcss": "^8.5.4",
+        "postcss-import": "^16.1.0",
+        "pump": "3.0.2",
+        "tailwindcss": "^3.4.17"
+    },
+    "browserslist": [
+        ">0.2%",
+        "not dead",
+        "not op_mini all",
+        "not IE 11"
+    ],
+    "config": {
+        "posts_per_page": 12,
+        "card_assets": true,
+        "custom": {
+            "lazy_images": {
+                "type": "boolean",
+                "default": false,
+                "description": "Enable lazy loading for images",
+                "group": "homepage"
+            },
+            "share_buttons": {
+                "type": "boolean",
+                "default": true,
+                "description": "Enable share buttons on posts",
+                "group": "post"
+            }
+        },
+        "image_sizes": {
+            "xs": {
+                "width": 100
+            },
+            "s": {
+                "width": 220
+            },
+            "m": {
+                "width": 300
+            },
+            "l": {
+                "width": 600
+            },
+            "xl": {
+                "width": 900
+            }
+        }
+    },
+    "resolutions": {
+        "glob": "^9.3.5"
+    }
+}
