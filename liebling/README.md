@@ -6,7 +6,7 @@ If you find this theme useful, please consider to make a donation to support its
 
 <a href="https://www.buymeacoffee.com/eddiesigner" target="_blank"><img src="https://res.cloudinary.com/edev/image/upload/v1583011476/button_y8hgt8.png" alt="Donate" style="width: 250px !important; height: 60px !important;" width="250" height="60"></a>
 
-## Preview
+## Preview dev
 
 You can see a live demo here: [https://liebling.eduardogomez.io](https://liebling.eduardogomez.io)
 
