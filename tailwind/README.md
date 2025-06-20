@@ -2,7 +2,6 @@
 
 Our Ghost v5 Theme made for [SREDevOps.org](https://sredevops.org) based on Tailwind CSS v3, responsive, dark color schema, SVG icons, sidebar + footer navigation, customized tags, and recommendations pages. Highly inspired by [Priority Vision's "Aspect" Theme](https://www.priority.vision/themes/aspect/) and took many functionalities from [@TryGhost "Source" default theme](https://github.com/TryGhost/Source).
 
-
 ## Table of Contents
 
 - [To Do / Roadmap](#to-do--roadmap)
